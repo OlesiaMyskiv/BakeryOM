@@ -1,0 +1,296 @@
+/* === Глобальні налаштування === */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Cormorant Garamond", serif;
+}
+
+/* Загальні стилі для HTML/BODY, що дозволяють розмістити футер внизу */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff; /* Колір фону тіла */
+    color: #4B2E2B; /* Базовий колір тексту */
+}
+
+/* Стиль для основного тега main, який займе весь доступний простір */
+main {
+    flex: 1; /* щоб зайняти весь доступний простір між header і footer */
+    /* Додайте відступ зверху, щоб контент не перекривався фіксованим хедером */
+    padding-top: 96px; /* Підберіть значення, що більше за висоту вашого хедера */
+    box-sizing: border-box;
+    /* Прибираємо тут центрування чи обмеження ширини, щоб Hero секція могла розтягуватися */
+    /* max-width: none; */
+    /* margin: 0; */
+}
+
+/* Анімація появи хедера згори */
+@keyframes slideDown {
+    0% {
+        transform: translateY(-100%); /* Починаємо поза екраном зверху */
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0); /* Закінчуємо у вихідному положенні */
+        opacity: 1;
+    }
+}
+
+/* Анімація плавного появи з невеликим зсувом вгору */
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Починаємо з повної прозорості */
+        transform: translateY(20px); /* Починаємо трохи нижче від фінальної позиції */
+    }
+    to {
+        opacity: 1; /* Закінчуємо повною непрозорістю */
+        transform: translateY(0); /* Закінчуємо у фінальній позиції */
+    }
+}
+
+
+/* Оновлений стиль для хедера */
+.header {
+    width: 100%;
+    background-color: #fff;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: fixed; /* Робимо хедер фіксованим */
+    top: 0; /* Прикріплюємо до верхнього краю */
+    left: 0; /* Прикріплюємо до лівого краю */
+    right: 0; /* Прикріплюємо до правого краю */
+    z-index: 100; /* Забезпечує відображення поверх іншого контенту */
+    /* Застосування анімації появи хедера */
+    animation: slideDown 0.6s ease-out forwards; /* Тривалість 0.6с, плавне завершення, залишається в кінцевому стані */
+}
+
+.header nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0; /* Прибрати стандартний відступ ul */
+    margin: 0; /* Прибрати стандартний відступ ul */
+}
+
+.nav-list .logo {
+    font-family: 'Love Light', regular; /* Залишено шрифт Love Light для логотипу */
+    font-size: 2rem;
+}
+
+.nav-list li {
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    color: #333;
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+}
+
+.nav-list li a {
+    text-decoration: none; /* Прибираємо підкреслення з посилань */
+    color: inherit; /* Успадковуємо колір від батьківського li */
+    transition: color 0.3s ease; /* Плавна зміна кольору при наведенні */
+}
+
+.nav-list li a:hover {
+    color: #a0522d; /* коричневий при наведенні */
+}
+
+
+/* Стилі для іконок */
+/* Стилі для контейнерів іконок (<a>) */
+.icons a {
+    display: inline-block;
+    width: 40px; /* Задай бажаний розмір */
+    height: 40px; /* Задай бажаний розмір */
+    overflow: hidden; /* Приховує частини іконки, які виходять за межі */
+}
+
+/* Стилі для самих зображень іконок (<img>) */
+.icons a img {
+    display: block; /* Усуває зайві відступи під зображенням */
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Масштабує іконку, зберігаючи пропорції */
+    filter: sepia(100%) saturate(50%) brightness(30%); /* Робить іконку коричневою */
+}
+
+
+/* Стиль для кнопки виходу, якщо ви додали її в хедері */
+.logout-button {
+    background: none;
+    border: none;
+    color: #333; /* Колір посилань */
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    text-decoration: none; /* Без підкреслення */
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+    transition: color 0.3s ease; /* Плавна зміна кольору при наведенні */
+}
+.logout-button:hover {
+    color: #a0522d; /* Коричневий при наведенні, як інші посилання меню */
+    text-decoration: underline; /* Підкреслення при наведенні */
+}
+
+/* Стилі для Hero секції */
+/* Застосовуємо анімацію появи до секції Hero */
+.hero {
+    display: flex;
+    justify-content: space-between; /* Розподіляємо текст і картинку по ширині */
+    align-items: center;
+    padding: 2rem 0; /* Прибираємо бокові відступи тут, щоб картинка могла йти до краю */
+    /* max-width: 1200px; - Прибираємо обмеження ширини для самої секції */
+    /* margin: 2rem auto; - Прибираємо центрування для самої секції */
+    width: 100%; /* Секція займає всю ширину */
+    margin-top: 2rem; /* Додаємо верхній відступ */
+    margin-bottom: 2rem; /* Додаємо нижній відступ */
+
+
+    /* Застосування анімації плавного появи */
+    opacity: 0; /* Спочатку невидимий */
+    animation: fadeIn 1s ease-out forwards; /* Тривалість 1с, плавне завершення, залишається в кінцевому стані */
+    animation-delay: 0.5s; /* Затримка перед початком анімації (після повідомлення про статус) */
+}
+
+/* Стилі для контейнера тексту в Hero секції */
+.hero-text {
+    flex: 1; /* Займає доступний простір */
+    max-width: 600px; /* Обмежуємо максимальну ширину текстового блоку */
+    margin-left: auto; /* Вирівнюємо текст по правому краю в його контейнері (в парі з margin-right: auto; центрувало б) */
+    margin-right: 2rem; /* Відступ між текстом і картинкою */
+    padding: 0 1rem; /* Додаємо внутрішні відступи з боків для тексту */
+}
+
+/* Стилі для заголовка "КОНДИТЕРСЬКА" */
+/* ЗБІЛЬШУЄМО РОЗМІР */
+.hero h2 {
+    font-size: 4rem; /* Збільшено розмір шрифту */
+    color: #4B2E2B; /* коричневий колір */
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+    margin-bottom: 0.5rem; /* Додано невеликий відступ знизу */
+}
+
+/* Стилі для заголовків "BAKERY" та "HOME" */
+/* ЗБІЛЬШУЄМО РОЗМІР */
+.hero h1, .hero-subtitle {
+    font-size: 10rem; /* Збільшено розмір шрифту */
+    color: #4B2E2B;
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+    line-height: 0.9; /* Зменшуємо міжрядковий інтервал для великого заголовка */
+    margin-top: 0; /* Прибираємо верхній відступ */
+    margin-bottom: 0; /* Прибираємо нижній відступ */
+}
+
+
+/* Стилі для контейнера картинки в Hero секції */
+.hero-image {
+    flex: 1; /* Займає доступний простір */
+    /* margin-left: 0; - не потрібен */
+    width: 100%; /* Картинка займе всю ширину свого контейнера */
+    /* max-width: none; - не потрібен */
+    /* display: block; - вже задано в img */
+    overflow: hidden; /* Може допомогти, якщо картинка занадто велика */
+}
+
+.hero-image img {
+    width: 100%; /* Картинка на всю ширину свого контейнера */
+    height: auto; /* Висота автоматично */
+    object-fit: cover; /* Змінено на cover - масштабує зображення, щоб воно заповнило контейнер, може обрізати */
+    /* Якщо object-fit: cover обрізає небажаним чином, можна повернути object-fit: contain;, але тоді можуть з'явитися поля */
+    border-radius: 0;
+    box-shadow: none;
+    display: block;
+}
+
+
+/* Адаптивність для Hero секції */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column; /* На маленьких екранах розміщуємо елементи вертикально */
+        text-align: center; /* Центруємо текст */
+        padding: 1rem; /* Повертаємо бокові відступи на мобільних */
+    }
+    .hero-text {
+        padding-right: 0; /* Прибираємо відступ праворуч */
+        margin-right: auto; /* Центруємо текстовий блок */
+        margin-bottom: 2rem; /* Додаємо відступ знизу */
+        max-width: 100%; /* На мобільних текст може займати всю ширину */
+    }
+    /* ЗБІЛЬШУЄМО РОЗМІР НА МОБІЛЬНИХ */
+    .hero h2 {
+        font-size: 3rem; /* Збільшено розмір заголовка "КОНДИТЕРСЬКА" на мобільних */
+    }
+    .hero h1, .hero-subtitle {
+        font-size: 6rem; /* Збільшено розмір великих заголовків на мобільних */
+        line-height: 1.1; /* Можливо, трохи збільшити міжрядковий інтервал на мобільних */
+    }
+    .hero-image {
+        margin-right: auto; /* Центруємо контейнер картинки */
+        /* Якщо потрібен відступ від краю на мобільних, додайте тут padding або margin */
+        padding: 0 1rem; /* Приклад: додати бокові відступи до контейнера картинки */
+    }
+    .hero-image img {
+        object-fit: contain; /* На мобільних, можливо, краще contain */
+    }
+}
+
+
+/* Футер */
+/* Застосовуємо анімацію появи до футера */
+.footer {
+    background-color: #f8f8f8;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto; /* Притискає футер до низу, якщо контенту мало */
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+    color: #555; /* Колір тексту */
+    /* Застосування анімації плавного появи */
+    opacity: 0; /* Спочатку невидимий */
+    animation: fadeIn 0.8s ease-out forwards; /* Тривалість 0.8с, плавне завершення, залишається в кінцевому стані */
+    animation-delay: 0.9s; /* Затримка, щоб з'явився після Hero секції */
+}
+
+.footer p {
+    font-size: 0.9rem;
+    color: #555;
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+    margin: 0.5rem 0; /* Відступ зверху та знизу */
+}
+
+.footer .socials {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.footer .socials span {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+    transition: color 0.3s ease;
+}
+
+.footer .socials span:hover {
+    color: #a0522d; /* Коричневий при наведенні */
+}

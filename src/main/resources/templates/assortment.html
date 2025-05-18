@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Домашня кондитерська - Cake House">
+  <title th:text="${title}">Асортимент - Cake House</title>
+  <link rel="stylesheet" th:href="@{/css/globals.css}">
+  <link rel="stylesheet" th:href="@{/css/assortment.css}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;700&family=Love+Light&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+  <nav class="navigation-menu">
+    <ul class="nav-list">
+      <li><a th:href="@{/about}" th:text="${navAbout}">Про нас</a></li>
+      <li><a th:href="@{/assortment}" th:text="${navAssortment}">Асортимент</a></li>
+      <li class="logo"><a th:href="@{/}" th:text="${headerTitle}">Cake House</a></li>
+      <li><a th:href="@{/reviews}" th:text="${navReviews}">Відгуки</a></li>
+      <li class="icons">
+        <a th:href="@{/cart}" id="openCartButton"><img th:src="@{/img/cart-icon.svg}" alt="Cart"></a>
+      </li>
+      <li class="icons">
+        <a th:href="@{/login-form}" id="openUserButton"><img th:src="@{/img/user-icon.svg}" alt="User"></a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <h1>Наш асортимент</h1>
+  <div class="product-list">
+    <div th:each="item : ${products}" class="product-card">
+      <img th:src="@{'/img/' + ${item.imageName}}" alt="product image" class="product-image">
+      <h2 th:text="${item.name}">Назва</h2>
+      <p th:text="${item.description}">Опис</p>
+      <p><strong>Ціна:</strong> <span th:text="${item.price} + ' грн'">0 грн</span></p>
+
+
+      <form th:action="@{/cart/add}" method="post">
+        <input type="hidden" name="assortmentId" th:value="${item.id}" />
+        <button type="submit" class="add-to-cart-btn">Додати в корзину</button>
+      </form>
+
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <p>&copy; 2025 Cake House. Всі права захищені.</p>
+  <div class="socials">
+    <span>Instagram</span>
+    <span>Facebook</span>
+    <span>Telegram</span>
+  </div>
+</footer>
+
+</body>
+</html>

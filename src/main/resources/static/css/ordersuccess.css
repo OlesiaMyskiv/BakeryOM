@@ -1,0 +1,291 @@
+/* src/main/resources/static/css/globals.css */
+
+/* Базові стилі для всього тіла сторінки та шрифтів */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Cormorant Garamond", serif; /* Застосовуємо базовий шрифт */
+    color: #333; /* Базовий колір тексту */
+    background-color: #f8f8f8; /* Легкий фоновий колір для всіх сторінок */
+    line-height: 1.6; /* Стандартний міжрядковий інтервал */
+}
+
+/* Анімація появи хедера згори */
+@keyframes slideDown {
+    0% {
+        transform: translateY(-100%); /* Починаємо поза екраном зверху */
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0); /* Закінчуємо у вихідному положенні */
+        opacity: 1;
+    }
+}
+
+/* Анімація плавного появи з невеликим зсувом вгору */
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Починаємо з повної прозорості */
+        transform: translateY(20px); /* Починаємо трохи нижче від фінальної позиції */
+    }
+    to {
+        opacity: 1; /* Закінчуємо повною непрозорістю */
+        transform: translateY(0); /* Закінчуємо у фінальній позиції */
+    }
+}
+
+
+/* Стилі для хедера */
+.header {
+    width: 100%;
+    background-color: #fff; /* Білий фон хедера */
+    padding: 1rem 0; /* Відступ зверху та знизу */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Легка тінь знизу */
+    position: fixed; /* Робимо хедер фіксованим */
+    top: 0; /* Прикріплюємо до верхнього краю */
+    left: 0; /* Прикріплюємо до лівого краю */
+    right: 0; /* Прикріплюємо до правого краю */
+    z-index: 100; /* Забезпечує відображення поверх іншого контенту */
+    /* Застосування анімації появи хедера */
+    animation: slideDown 0.6s ease-out forwards; /* Тривалість 0.6с, плавне завершення, залишається в кінцевому стані */
+}
+
+.header nav {
+    max-width: 1200px; /* Максимальна ширина контенту хедера */
+    margin: 0 auto; /* Центрування хедера */
+    display: flex;
+    justify-content: space-between; /* Розподіл елементів по ширині */
+    align-items: center; /* Вирівнювання по вертикалі */
+    padding: 0 2rem; /* Відступи з боків */
+}
+
+.nav-list {
+    display: flex;
+    list-style: none; /* Прибрати стандартні маркери списку */
+    gap: 2rem; /* Відстань між елементами списку */
+    align-items: center;
+    width: 100%;
+    justify-content: space-between; /* Розподіл елементів по ширині */
+    padding: 0; /* Прибрати стандартний відступ списку ul */
+    margin: 0; /* Прибрати стандартний відступ списку ul */
+}
+
+.nav-list .logo {
+    font-family: 'Love Light', regular; /* Спеціальний шрифт для логотипу */
+    font-size: 2rem;
+    white-space: nowrap; /* Запобігти переносу тексту логотипу */
+}
+
+.nav-list li {
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer; /* Показувати курсор-вказівник */
+    color: #333; /* Колір тексту елементів меню */
+    font-family: "Cormorant Garamond", serif; /* Шрифт для елементів меню */
+}
+
+.nav-list li a {
+    text-decoration: none; /* Прибрати стандартне підкреслення посилань */
+    color: inherit; /* Успадкувати колір від батьківського li */
+    transition: color 0.3s ease; /* Плавна зміна кольору при наведенні */
+}
+
+.nav-list li a:hover {
+    color: #007bff; /* Зміна кольору при наведенні (приклад: синій) */
+}
+
+/* Стилі для контейнерів іконок (батьківський li) */
+.icons {
+    /* Тут можуть бути додаткові відступи, якщо потрібно */
+}
+
+/* Стилі для посилань навколо іконок (сам тег <a>) */
+.icons a {
+    display: inline-block; /* Щоб можна було задавати розміри */
+    width: 30px; /* Бажаний розмір іконки */
+    height: 30px; /* Бажаний розмір іконки */
+    overflow: hidden; /* Приховати все, що виходить за межі */
+    /* margin: 0 5px; /* Приклад відступу між іконками */
+    padding: 0;
+}
+
+/* Стилі для самих зображень іконок (тег <img>) */
+.icons a img {
+    display: block; /* Видаляє зайві відступи під зображенням */
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Масштабує зображення, зберігаючи пропорції */
+    filter: sepia(100%) saturate(50%) brightness(30%); /* Робить іконку коричневою */
+    transition: filter 0.3s ease; /* Плавна зміна фільтра при наведенні */
+}
+/* Приклад ефекту при наведенні на іконку */
+.icons a:hover img {
+    filter: sepia(0%) saturate(100%) brightness(100%); /* Робить іконку кольоровою або інший ефект */
+}
+
+
+/* Стилі для кнопки "Вихід" */
+button.logout-button {
+    background: none; /* Без фону */
+    border: none; /* Без рамки */
+    font: inherit; /* Успадкувати шрифт від батьківського li */
+    cursor: pointer; /* Курсор-вказівник */
+    color: #333; /* Колір тексту */
+    padding: 0;
+    margin: 0;
+    transition: color 0.3s ease; /* Плавна зміна кольору при наведенні */
+}
+
+button.logout-button:hover {
+    color: #dc3545; /* Колір при наведенні (приклад: червоний) */
+}
+
+
+/* Стилі для футера */
+.footer {
+    background-color: #f8f8f8; /* Світло-сірий фон */
+    text-align: center; /* Вирівнювання тексту по центру */
+    padding: 1rem 0; /* Відступ зверху та знизу */
+    margin-top: 3rem; /* Відступ від основного контенту */
+    font-family: "Cormorant Garamond", serif; /* Шрифт для футера */
+    color: #555; /* Колір тексту */
+    /* Застосування анімації плавного появи до футера */
+    opacity: 0; /* Спочатку невидимий */
+    animation: fadeIn 0.8s ease-out forwards; /* Тривалість, функція, стан після */
+    animation-delay: 0.7s; /* Затримка, щоб з'явився після форми */
+}
+
+.footer p {
+    font-size: 0.9rem;
+    color: #555;
+    font-family: "Cormorant Garamond", serif;
+    margin: 0.5rem 0; /* Відступ зверху та знизу для параграфа */
+}
+
+.footer .socials {
+    display: flex;
+    gap: 1rem; /* Відстань між посиланнями соцмереж */
+    justify-content: center; /* Центрування блоку соцмереж */
+    margin-top: 0.5rem; /* Відступ зверху */
+}
+
+.footer .socials span {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333; /* Колір тексту */
+    cursor: pointer; /* Курсор-вказівник */
+    font-family: "Cormorant Garamond", serif;
+    transition: color 0.3s ease; /* Плавна зміна кольору */
+}
+
+.footer .socials span:hover {
+    color: #007bff; /* Колір при наведенні (приклад: синій) */
+}
+
+
+/* src/main/resources/static/css/ordersuccess.css */
+
+/* Ці стилі можуть доповнювати або перевизначати глобальні для конкретної сторінки */
+
+/* Стилі для body сторінки успіху замовлення (якщо потрібно специфічний фон) */
+/* Якщо ви використовуєте globals.css, фоновий колір вже задано. Якщо потрібне зображення, розкоментуйте: */
+/*
+body.order-success-page {
+    background-image: url('/img/success-background.jpg'); // Замініть на своє зображення
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+*/
+
+/* Стилі для основного контейнера - ПРИМУСОВО ЦЕНТРУЄМО ЙОГО ВМІСТ */
+main.container {
+    /* Додайте відступ зверху, щоб хедер не перекривав контент. */
+    /* Цей відступ можна задати в body як padding-top або тут як margin-top */
+    margin-top: 96px; /* Відступ зверху (більше за висоту хедера) */
+    text-align: center; /* <<<< ЯВНО ЦЕНТРУЄМО ВМІСТ КОНТЕЙНЕРА */
+    /* Анімація плавного появи до головного контейнера, якщо потрібно анімувати все одразу */
+    /* opacity: 0; */
+    /* animation: fadeIn 1s ease-out forwards; */
+    /* animation-delay: 0.3s; */ /* Затримка після хедера */
+}
+
+/* Стилі для головного заголовка "Замовлення успішно оформлено!" */
+main h1 {
+    color: #28a745;
+    margin-bottom: 30px;
+    text-align: center; /* <<<< ЯВНО ЦЕНТРУЄМО ТЕКСТ ЗАГОЛОВКА */
+    /* Можна додати анімацію тільки для заголовка */
+    /* opacity: 0; */
+    /* animation: fadeIn 0.8s ease-out forwards; */
+    /* animation-delay: 0.5s; */ /* Затримка після контейнера */
+}
+
+/* СТИЛІ ДЛЯ БЛОКУ-КОНТЕЙНЕРА ПОВІДОМЛЕНЬ (order-summary-box) */
+/* Важливо! Текст всередині цього блоку ми потім вирівнюємо ЛІВОРУЧ (text-align: left;) */
+.order-summary-box {
+    background-color: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    padding: 25px 30px;
+    margin: 30px auto; /* Центрування блоку по горизонталі та відступи */
+    max-width: 600px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: left; /* <<<< Вирівнювання тексту ВСЕРЕДИНІ блоку ЛІВОРУЧ */
+
+    /* АНІМАЦІЯ: застосовуємо створені keyframes */
+    opacity: 0; /* Блок спочатку невидимий */
+    animation: fadeIn 1s ease-out forwards; /* Застосовуємо анімацію: назва, тривалість, функція часу, стан після */
+    animation-delay: 0.4s; /* Затримка після хедера */
+}
+
+/* СТИЛІ ДЛЯ НУМЕРОВАНОГО СПИСКУ ВСЕРЕДИНІ БЛОКУ */
+.order-summary-list {
+    padding-left: 25px;
+    margin: 0;
+    list-style-position: outside;
+}
+
+/* СТИЛІ ДЛЯ ОКРЕМИХ ПУНКТІВ СПИСКУ */
+.order-summary-list li {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.order-summary-list li.success-message-item {
+    color: #155724;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.order-summary-list li.order-id-item {
+    color: #555;
+    font-size: 1.05rem;
+}
+
+.order-summary-list li.thank-you-message-item {
+    color: #555;
+}
+
+
+/* Стилі для посилання "Повернутися до асортименту" */
+/* Воно є inline-block, тому text-align: center на батьківському main його центрує */
+main a.inline-block {
+    margin-top: 40px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    /* Утилітарні класи з HTML дають основний вигляд */
+    /* Можна додати анімацію тільки для кнопки */
+    opacity: 0; /* Спочатку невидима */
+    animation: fadeIn 0.8s ease-out forwards; /* Тривалість, функція, стан після */
+    animation-delay: 0.6s; /* Затримка після блоку повідомлень */
+}
+
+/* Ефекти при наведенні на кнопку */
+main a.inline-block:hover {
+    opacity: 0.95;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+}

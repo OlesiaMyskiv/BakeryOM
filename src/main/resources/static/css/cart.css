@@ -1,0 +1,418 @@
+/* Об'єднаний CSS код для одного файлу (наприклад, globals.css або style.css) */
+
+/* Загальний скидання стилів */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Базові стилі для body */
+body {
+  background-color: #fff;
+  color: #000; /* Базовий колір тексту */
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Cormorant Garamond", serif; /* Основний шрифт */
+}
+
+/* Налаштування для повноекранного layout (якщо використовується) */
+html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+    flex: 1; /* щоб зайняти весь доступний простір між header і footer */
+}
+
+
+/* Стилі ХЕДЕРА */
+.header {
+  width: 100%;
+  background-color: #fff;
+  padding: 1rem 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.navigation-menu {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem; /* Додано бокові відступи для адаптивності */
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.nav-list li a {
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #4B2E2B; /* Коричневий колір тексту навігації */
+  transition: color 0.3s ease-in-out; /* Додано transition */
+  font-family: "Cormorant Garamond", serif;
+}
+
+.nav-list li a:hover {
+  color: #a0522d; /* Світло-коричневий при наведенні */
+}
+
+.nav-list .logo a {
+  font-family: 'Love Light', cursive;
+  font-size: 2rem;
+  color: #4B2E2B; /* Коричневий колір логотипу */
+  font-weight: bold;
+}
+
+/* Стилі ІКОНОК (Корзина, Користувач) */
+.icons a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+}
+
+.icons a img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* Фільтр для коричневого кольору іконки */
+  filter: sepia(100%) saturate(50%) brightness(30%);
+}
+
+/* Стиль для кнопки виходу (якщо вона в хедері і глобальна) */
+.logout-button {
+     background: none;
+     border: none;
+     color: #4B2E2B; /* Колір тексту, як у навігації */
+     font-size: 1rem;
+     font-weight: 500;
+     cursor: pointer;
+     padding: 0;
+     margin: 0;
+     text-decoration: none; /* Без підкреслення */
+     font-family: "Cormorant Garamond", serif;
+     transition: color 0.3s ease-in-out; /* Додано transition */
+}
+ .logout-button:hover {
+      text-decoration: underline; /* Підкреслення при наведенні */
+      color: #a0522d; /* Колір при наведенні */
+ }
+
+
+/* Загальні стилі для заголовків */
+h1 { /* Застосується до всіх h1, можна перевизначити в page-specific стилях */
+  font-size: 2rem;
+  font-weight: bold;
+  color: #4B2E2B;
+  margin-bottom: 1.5rem;
+  font-family: 'Love Light', cursive;
+  text-align: center;
+}
+
+/* Загальні допоміжні текстові класи */
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-red-500 { color: #ef4444; } /* Tailwind Red-500 */
+.text-green-500 { color: #22c55e; } /* Tailwind Green-500 */
+.text-blue-500 { color: #3b82f6; } /* Tailwind Blue-500 */
+.text-gray-700 { color: #374151; } /* Tailwind Gray-700 */
+.text-gray-800 { color: #1f2937; } /* Tailwind Gray-800 */
+.font-bold { font-weight: bold; }
+.text-sm { font-size: 0.875rem; }
+.text-lg { font-size: 1.125rem; }
+.text-xl { font-size: 1.25rem; }
+.text-2xl { font-size: 1.5rem; }
+.text-3xl { font-size: 1.875rem; }
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 0.75rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mb-8 { margin-bottom: 2rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-4 { margin-top: 1rem; }
+.mt-6 { margin-top: 1.5rem; }
+.mr-2 { margin-right: 0.5rem; }
+.mr-4 { margin-right: 1rem; }
+.p-4 { padding: 1rem; }
+.rounded { border-radius: 0.25rem; }
+.rounded-md { border-radius: 0.375rem; }
+.rounded-lg { border-radius: 0.5rem; }
+.shadow { box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); }
+.shadow-outline:focus { box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5); } /* Приклад стилю фокусу */
+.border { border-width: 1px; border-style: solid; border-color: #e5e7eb; } /* Tailwind Border */
+.border-b { border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #e5e7eb; }
+.w-full { width: 100%; }
+.py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
+.py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+.px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+.px-4 { padding-left: 1rem; padding-right: 1rem; }
+.leading-tight { line-height: 1.25; }
+.block { display: block; }
+.inline-block { display: inline-block; }
+.flex { display: flex; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.grid { display: grid; }
+.gap-6 { gap: 1.5rem; }
+
+
+/* Стилі для контейнера головного вмісту (може бути специфічним для layout) */
+main.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem; /* Бокові та верхні/нижні відступи */
+}
+
+/* Стилі для заголовка сторінки (якщо відрізняється) */
+/* h1 { /* Можна перевизначити тут */ /* } */
+
+
+/* Стилі для сітки товарів у кошику (використовуємо вже існуючі класи grid та grid > div) */
+/* .grid { /* Загальні стилі вже є вище */ /* } */
+
+/* Стилі для окремого товару в сітці */
+/* .grid > div { /* Загальні стилі вже є вище */ /* } */
+
+/* Внутрішній flex-контейнер для вирівнювання вмісту товару */
+.grid > div .flex {
+  display: flex; /* Визначаємо flex-контейнер */
+  justify-content: space-between; /* Розподіляємо простір */
+  align-items: center; /* Вирівнюємо по центру по вертикалі */
+  /* flex-wrap: wrap; */ /* Розкоментуйте, якщо потрібно переносити елементи на новий рядок на вузьких екранах */
+}
+
+/* Стилі зображення товару в кошику */
+.cart-item-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover; /* Або contain */
+  border-radius: 5px;
+  margin-right: 15px;
+}
+
+/* Стилі для заголовка товару (використовуємо вже існуючий клас grid h2) */
+/* .grid h2 { /* Стиль вже є вище */ /* } */
+
+/* Стилі для параграфів з деталями товару (ціна) (використовуємо вже існуючий клас grid p)*/
+/* .grid p { /* Стиль вже є вище */ /* } */
+
+
+/* Стилі для загальної суми (використовуємо вже існуючий клас text-2xl) */
+/* .text-2xl { /* Стиль вже є вище */ /* } */
+
+/* Стилі для суми товару (використовуємо вже існуючий клас text-lg) */
+/* .grid .text-lg { /* Стиль вже є вище */ /* } */
+
+
+/* СТИЛІ ДЛЯ ФОРМИ ОФОРМЛЕННЯ ЗАМОВЛЕННЯ */
+.checkout-form-container {
+    margin-top: 3rem;
+    padding: 2rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 0.5rem;
+    background-color: #f9f9f9;
+}
+
+.checkout-form-container h2 {
+    font-size: 1.5rem;
+    color: #4B2E2B;
+    font-family: 'Love Light', cursive;
+    margin-bottom: 1rem;
+}
+
+.checkout-form-container label {
+    font-family: "Cormorant Garamond", serif;
+    color: #555;
+    margin-left: 0.5rem; /* Відступ від радіо-кнопки */
+    cursor: pointer; /* Курсор-вказівник */
+}
+
+.checkout-form-container input[type="radio"] {
+    margin-right: 0.5rem;
+    /* Додайте додаткові стилі для радіо-кнопок, якщо потрібно */
+}
+
+/* Стилі для прихованого блоку адреси */
+#address-fields {
+    /* display: none; */ /* Управління відображенням через JavaScript */
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    border: 1px dashed #ccc; /* Пунктирна рамка */
+    border-radius: 0.4rem;
+    background-color: #fff;
+}
+
+#address-fields h3 {
+     font-size: 1.2rem;
+     color: #4B2E2B;
+     font-family: "Cormorant Garamond", serif;
+     margin-bottom: 1rem;
+}
+
+#address-fields label {
+    display: block;
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-family: "Cormorant Garamond", serif;
+}
+
+#address-fields input[type="text"] {
+    display: block;
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    font-family: "Cormorant Garamond", serif;
+}
+
+#address-fields input[type="text"]:focus {
+    outline: none;
+    border-color: #a0522d; /* Колір рамки при фокусі */
+    box-shadow: 0 0 5px rgba(160, 82, 45, 0.3);
+}
+
+/* Стилі для кнопки "Оформити замовлення" у формі оформлення */
+.checkout-form-container button[type="submit"] {
+    display: inline-block;
+    background-color: #22c55e; /* Tailwind Green-500 */
+    color: white;
+    font-weight: bold;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease-in-out;
+    font-family: "Cormorant Garamond", serif;
+}
+
+.checkout-form-container button[type="submit"]:hover {
+    background-color: #16a34a; /* Tailwind Green-600 або темніший зелений */
+}
+
+/* Стилі для повідомлення про порожню корзину або про вхід для оформлення */
+.text-center.text-xl {
+   color: #777;
+   margin-top: 2rem;
+   font-family: "Cormorant Garamond", serif;
+}
+
+.text-center.text-xl a {
+    color: #4B2E2B;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.text-center.text-xl a:hover {
+    text-decoration: underline;
+    color: #a0522d;
+}
+
+/* Стилі для кнопок видалення та оновлення в кошику */
+.bg-red-500 { background-color: #ef4444; } /* Tailwind Red-500 */
+.hover\:bg-red-700:hover { background-color: #b91c1c; } /* Tailwind Red-700 */
+.bg-gray-300 { background-color: #d1d5db; } /* Tailwind Gray-300 */
+.hover\:bg-gray-400:hover { background-color: #9ca3af; } /* Tailwind Gray-400 */
+
+
+/* Медіа-запити для адаптивності */
+@media (max-width: 768px) {
+  .navigation-menu {
+    padding: 0 1rem;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .nav-list li {
+      width: 100%;
+      text-align: center;
+  }
+
+  .nav-list li a {
+    padding: 0.5rem 0;
+    display: block;
+  }
+
+   .nav-list .icons {
+       width: auto;
+   }
+
+   /* Забезпечуємо, що іконки центрують разом на мобільних */
+   .nav-list li.icons {
+       display: flex;
+       justify-content: center;
+       gap: 1rem; /* Відстань між іконками */
+   }
+
+
+  main.container {
+    padding: 1rem;
+  }
+
+  .grid > div .flex {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+   .cart-item-image {
+       margin-right: 0;
+       margin-bottom: 1rem;
+   }
+
+  .grid > div .flex > div:last-child {
+      width: 100%;
+      text-align: left;
+      margin-top: 1rem;
+  }
+
+  /* Адаптивність для блоку з кількістю та ціною */
+  .grid > div .flex > div:first-child > div.flex {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+  }
+}
+
+/* Стилі для кнопок форми входу/реєстрації (якщо вони теж в цьому файлі) */
+/* Приклад стилів для кнопок з bg-blue-500 в login-form.html */
+.bg-blue-500 { background-color: #3b82f6; } /* Tailwind Blue-500 */
+.hover\:bg-blue-700:hover { background-color: #1d4ed8; } /* Tailwind Blue-700 */
+
+/* Стилі для полів вводу форми входу/реєстрації */
+.shadow.appearance-none.border.rounded.w-full.py-2.px-3.text-gray-700.leading-tight {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    -webkit-appearance: none; /* Для кросбраузерності */
+    -moz-appearance: none;
+    appearance: none;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #d1d5db; /* Tailwind Gray-300 */
+    border-radius: 0.25rem;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    color: #374151; /* Tailwind Gray-700 */
+    line-height: 1.25;
+}
+
+/* Стилі фокусу для полів вводу */
+.focus\:outline-none:focus { outline: none; }
+.focus\:shadow-outline:focus { box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5); } /* Стиль фокусу */

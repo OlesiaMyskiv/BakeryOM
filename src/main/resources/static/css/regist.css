@@ -1,0 +1,249 @@
+/* Загальний стиль для body сторінки реєстрації */
+body {
+    /* Замініть шлях на реальний шлях до вашого фонового зображення для реєстрації */
+    /* Можна використовувати те саме зображення, що й для входу, або інше тематичне */
+    background-image: url('/img/login.jpg'); /* Замініть на своє зображення */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #4B2E2B; /* Темно-коричневий колір тексту за замовчуванням */
+    margin: 0;
+    padding-top: 76px; /* Відступ зверху, щоб хедер не перекривав контент */
+    min-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column; /* Розміщення елементів вертикально */
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+}
+
+/* Анімація появи хедера згори */
+@keyframes slideDown {
+    0% {
+        transform: translateY(-100%); /* Починаємо поза екраном зверху */
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0); /* Закінчуємо у вихідному положенні */
+        opacity: 1;
+    }
+}
+
+/* ХЕДЕР */
+.header {
+    width: 100%;
+    background-color: #fff;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: fixed; /* АБО position: sticky; */
+    top: 0;
+    z-index: 100; /* Забезпечує відображення поверх іншого контенту */
+    /* Застосування анімації */
+    animation: slideDown 0.6s ease-out forwards; /* Тривалість 0.6с, плавне завершення, залишається в кінцевому стані */
+}
+
+.navigation-menu {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.nav-list li a {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+    transition: 0.3s;
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+}
+
+.nav-list li a:hover {
+    color: #a0522d; /* коричневий при наведенні */
+}
+
+.nav-list .logo a {
+    font-family: 'Love Light', cursive; /* Залишено шрифт Love Light для логотипу */
+    font-size: 2rem;
+    color: #4B2E2B;
+    font-weight: bold;
+}
+
+/* Іконка корзини */
+/* Стилі для контейнерів іконок (<a>) */
+.icons a {
+    display: inline-block;
+    width: 40px; /* Задай бажаний розмір */
+    height: 40px; /* Задай бажаний розмір */
+    overflow: hidden; /* Приховує частини іконки, які виходять за межі */
+}
+
+/* Стилі для самих зображень іконок (<img>) */
+.icons a img {
+    display: block; /* Усуває зайві відступи під зображенням */
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Масштабує іконку, зберігаючи пропорції */
+    filter: sepia(100%) saturate(50%) brightness(30%); /* Робить іконку коричневою */
+}
+
+/* Анімація легкої появи для інших елементів */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); /* Починаємо трохи нижче і прозорими */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Закінчуємо у вихідному положенні */
+    }
+}
+
+/* Стиль для головного контейнера форми реєстрації */
+/* Використовуємо клас з вашого HTML: .registration-form-container */
+.registration-form-container {
+    background-color: rgba(89, 65, 0, 0.9); /* Напівпрозорий темно-золотистий/коричневий фон (схоже на логін) */
+    color: white; /* Колір тексту всередині блоку */
+    border-radius: 1rem; /* Заокруглені кути */
+    padding: 2rem; /* Внутрішній відступ */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тінь */
+    max-width: 400px; /* Максимальна ширина */
+    margin: 2rem auto; /* Центрування по горизонталі та відступ зверху/знизу */
+    display: flex; /* Використовуємо flexbox */
+    flex-direction: column; /* Розміщуємо елементи вертикально */
+    backdrop-filter: blur(5px); /* Ефект розмиття фону за блоком */
+    -webkit-backdrop-filter: blur(5px); /* Для Safari */
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+    /* Застосування анімації */
+    animation: fadeIn 0.8s ease-out forwards; /* Тривалість 0.8с, плавне завершення, залишається в кінцевому стані */
+    animation-delay: 0.3s; /* Затримка перед початком анімації (щоб хедер з'явився першим) */
+}
+
+/* Стиль для заголовка h2 всередині контейнера реєстрації */
+.registration-form-container h2 {
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+    font-size: 2.2rem; /* Розмір шрифту (трохи менше за h1 на логіні, можна налаштувати) */
+    text-align: center; /* Центрування */
+    margin-bottom: 1.5rem; /* Відступ знизу */
+    color: white; /* Колір заголовка */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* Легка тінь для тексту */
+}
+
+/* Стиль для повідомлень про помилки (.alert.error) */
+.registration-form-container .alert.error {
+    color: #f8d7da; /* Блідо-червоний колір тексту на темному фоні */
+    background-color: #721c24; /* Темно-червоний фон */
+    border: 1px solid #f5c6cb;
+    border-radius: 0.25rem;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+}
+
+/* Стиль для тексту помилки під полем вводу (.error-text) */
+.registration-form-container .error-text {
+    color: #f8d7da; /* Блідо-червоний колір тексту */
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+    display: block;
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+}
+
+
+/* Стиль для label всередині контейнера реєстрації */
+.registration-form-container label {
+    color: white; /* Колір тексту лейбла */
+    display: block; /* Робимо блоковим */
+    margin-bottom: 0.5rem; /* Відступ знизу */
+    font-weight: bold; /* Жирний шрифт */
+    font-size: 0.875rem; /* Розмір тексту */
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+}
+
+/* Стиль для input полів всередині контейнера реєстрації */
+.registration-form-container input[type="text"],
+.registration-form-container input[type="email"],
+.registration-form-container input[type="password"] {
+    border-radius: 0.5rem; /* Заокруглення */
+    padding: 0.75rem 1rem; /* Внутрішній відступ */
+    border: 1px solid #ccc; /* Рамка */
+    width: 100%; /* Ширина */
+    margin-bottom: 1rem; /* Відступ знизу */
+    box-sizing: border-box; /* Враховуємо padding та border */
+    color: #333; /* Колір тексту в полях */
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+}
+
+/* Стиль для кнопки submit всередині контейнера реєстрації */
+.registration-form-container button[type="submit"] {
+    background-color: #C9B194; /* Колір кнопки */
+    color: white;
+    font-weight: bold;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    width: 100%; /* Кнопка на всю ширину */
+    transition: background-color 0.3s ease;
+    box-sizing: border-box;
+    margin-top: 1rem; /* Відступ зверху від останнього поля */
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+}
+
+.registration-form-container button[type="submit"]:hover {
+    background-color: #b09a80; /* Ефект при наведенні */
+}
+
+
+/* Стиль для футера (залишаємо без змін) */
+.footer {
+    background-color: #f8f8f8;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto;
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+    /* Можна додати анімацію до футера */
+    /* animation: fadeIn 0.8s ease-out forwards; */
+    /* animation-delay: 0.5s; */ /* Додайте затримку після форми */
+}
+
+.footer p {
+    font-size: 0.9rem;
+    color: #555;
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+}
+
+.footer .socials {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.footer .socials span {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+}
+
+/* Контейнер для основного контенту (щоб уникнути перекриття хедером) */
+/* Якщо ви використовуєте registration-form-container як основний контент, цей клас може бути не потрібен для анімації */
+.main-content {
+    margin-top: 76px; /* Або інша висота, що відповідає висоті вашого хедера */
+    /* Інші стилі для вашого основного контенту */
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+    /* Якщо main-content обгортає registration-form-container, анімація може бути тут */
+    /* animation: fadeIn 0.8s ease-out forwards; */
+    /* animation-delay: 0.3s; */
+}

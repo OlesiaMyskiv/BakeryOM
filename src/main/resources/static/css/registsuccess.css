@@ -1,0 +1,223 @@
+/* Визначаємо keyframes для анімації появи хедера згори */
+@keyframes slideDown {
+    0% {
+        transform: translateY(-100%); /* Починаємо поза екраном зверху */
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0); /* Закінчуємо у вихідному положенні */
+        opacity: 1;
+    }
+}
+
+/* Визначаємо keyframes для анімації плавного появи з невеликим зсувом вгору */
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Починаємо з повної прозорості */
+        transform: translateY(20px); /* Починаємо трохи нижче від фінальної позиції */
+    }
+    to {
+        opacity: 1; /* Закінчуємо повною непрозорістю */
+        transform: translateY(0); /* Закінчуємо у фінальній позиції */
+    }
+}
+
+/* Загальні стилі для HTML/BODY, що дозволяють розмістити футер внизу */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: "Cormorant Garamond", serif; /* Застосовуємо базовий шрифт */
+    color: #4B2E2B; /* Базовий колір тексту */
+    background-color: #f8f8f8; /* Легкий фоновий колір за замовчуванням */
+}
+
+/* Стиль для основного тега main, який займе весь доступний простір */
+main {
+    flex: 1; /* Щоб зайняти весь доступний простір між header і footer */
+    padding-top: 96px; /* Додайте відступ зверху, щоб контент не перекривався фіксованим хедером. Підберіть значення, що більше за висоту хедера. */
+    box-sizing: border-box; /* Враховуйте padding у загальній ширині/висоті елемента */
+    display: flex; /* Використовуємо flexbox для центрування вмісту main */
+    justify-content: center; /* Центруємо вміст по горизонталі */
+    align-items: center; /* Центруємо вміст по вертикалі */
+    padding-left: 1rem; /* Додайте невеликі відступи з боків */
+    padding-right: 1rem; /* Додайте невеликі відступи з боків */
+}
+
+
+/* Стиль для основного контейнера повідомлення про успішну реєстрацію */
+/* Застосовуємо анімацію появи до цього блоку */
+main .container {
+    background-color: #fff0e6; /* ніжно-кремовий фон */
+    border: 2px solid #4B2E2B; /* темно-коричнева рамка */
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px rgba(75, 46, 43, 0.2); /* м'яка тінь */
+    padding: 2rem;
+    color: #4B2E2B; /* темно-коричневий текст */
+    font-family: "Cormorant Garamond", serif;
+    max-width: 600px; /* Обмеження максимальної ширини */
+    width: 100%; /* Займає всю доступну ширину в межах max-width */
+    text-align: center; /* Центрування тексту всередині контейнера */
+
+    /* Застосування анімації плавного появи */
+    opacity: 0; /* Спочатку невидимий */
+    animation: fadeIn 1s ease-out forwards; /* Тривалість 1с, плавне завершення, залишається в кінцевому стані */
+    animation-delay: 0.3s; /* Затримка перед початком анімації (після хедера) */
+}
+
+main h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #4B2E2B;
+    text-shadow: 1px 1px 0 #d9b3a5; /* легка "обвугнена" тінь */
+    font-family: "Cormorant Garamond", serif;
+    margin-top: 0; /* Прибираємо стандартний верхній відступ */
+    margin-bottom: 1.5rem; /* Додаємо відступ знизу */
+}
+
+main p {
+    font-size: 1.2rem;
+    color: #5C3A2E;
+    margin-bottom: 1.5rem; /* Збільшено відступ знизу для параграфа */
+    font-family: "Cormorant Garamond", serif;
+}
+
+main a {
+    display: inline-block; /* Робимо посилання блочно-рядковим для застосування відступів */
+    font-weight: 600;
+    text-decoration: none;
+    color: #8B4513;
+    transition: color 0.3s ease;
+    font-family: "Cormorant Garamond", serif;
+    margin-top: 1rem; /* Відступ зверху від попереднього елемента */
+    padding: 0.75rem 1.5rem; /* Додаємо внутрішні відступи, щоб виглядало як кнопка */
+    border: 2px solid #8B4513; /* Рамка кольору тексту */
+    border-radius: 0.5rem; /* Заокруглення кутів */
+    background-color: transparent; /* Прозорий фон за замовчуванням */
+    /* Можна додати анімацію тільки для посилання */
+    /* opacity: 0; */
+    /* animation: fadeIn 0.8s ease-out forwards; */
+    /* animation-delay: 0.5s; */ /* Затримка після контейнера */
+}
+
+main a:hover {
+    color: #fff; /* Білий текст при наведенні */
+    background-color: #8B4513; /* Зміна кольору фону при наведенні */
+    text-decoration: none; /* Прибрати підкреслення при наведенні */
+    border-color: #8B4513; /* Зберігаємо колір рамки */
+}
+
+
+/* ХЕДЕР */
+.header {
+    width: 100%;
+    background-color: #fff;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: fixed; /* Робимо хедер фіксованим */
+    top: 0; /* Прикріплюємо до верхнього краю */
+    left: 0; /* Прикріплюємо до лівого краю */
+    right: 0; /* Прикріплюємо до правого краю */
+    z-index: 100; /* Забезпечує відображення поверх іншого контенту */
+    /* Застосування анімації появи хедера */
+    animation: slideDown 0.6s ease-out forwards; /* Тривалість 0.6с, плавне завершення, залишається в кінцевому стані */
+}
+
+.navigation-menu {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-list li a {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+    transition: 0.3s;
+    font-family: "Cormorant Garamond", serif;
+}
+
+.nav-list li a:hover {
+    color: #a0522d; /* коричневий при наведенні */
+}
+
+.nav-list .logo a {
+    font-family: 'Great Vibes', cursive; /* Змінено на Great Vibes, як у вашому коді для лого */
+    font-size: 2rem;
+    color: #4B2E2B;
+    font-weight: bold;
+    text-decoration: none; /* Прибираємо підкреслення з посилання логотипу */
+}
+
+/* Іконка корзини */
+/* Стилі для контейнерів іконок (<a>) */
+.icons a {
+    display: inline-block;
+    width: 40px; /* Задай бажаний розмір */
+    height: 40px; /* Задай бажаний розмір */
+    overflow: hidden; /* Приховує частини іконки, які виходять за межі */
+}
+
+/* Стилі для самих зображень іконок (<img>) */
+.icons a img {
+    display: block; /* Усуває зайві відступи під зображенням */
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Масштабує іконку, зберігаючи пропорції */
+    filter: sepia(100%) saturate(50%) brightness(30%); /* Робить іконку коричневою */
+}
+
+/* Футер */
+/* Застосовуємо анімацію появи до футера */
+.footer {
+    background-color: #f8f8f8;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto; /* Притискає футер до низу, якщо контенту мало */
+    font-family: "Cormorant Garamond", serif;
+    color: #555;
+    /* Застосування анімації плавного появи */
+    opacity: 0; /* Спочатку невидимий */
+    animation: fadeIn 0.8s ease-out forwards; /* Тривалість 0.8с, плавне завершення, залишається в кінцевому стані */
+    animation-delay: 0.7s; /* Затримка, щоб з'явився після основного контенту */
+}
+
+.footer p {
+    font-size: 0.9rem;
+    color: #555;
+    font-family: "Cormorant Garamond", serif;
+}
+
+.footer .socials {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.footer .socials span {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+    font-family: "Cormorant Garamond", serif;
+    transition: color 0.3s ease;
+}
+
+.footer .socials span:hover {
+    color: #007bff;
+}

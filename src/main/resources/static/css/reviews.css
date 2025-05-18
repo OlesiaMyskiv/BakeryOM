@@ -1,0 +1,250 @@
+/* === Глобальні налаштування === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Cormorant Garamond", serif;
+}
+
+/* Загальні стилі для HTML/BODY, що дозволяють розмістити футер внизу */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  /* Фон та колір тексту для всього тіла, якщо не перевизначено на конкретній сторінці */
+  background: #341d18;
+  color: #fff;
+  font-family: "Cormorant Garamond", serif;
+  min-height: 100vh;
+}
+
+/* Стиль для основного тега main, який займе весь доступний простір */
+main {
+  flex: 1; /* щоб зайняти весь доступний простір між header і footer */
+  /* Додайте відступ зверху, щоб контент не перекривався фіксованим хедером */
+  padding-top: 96px; /* Підберіть значення, що більше за висоту вашого хедера */
+  box-sizing: border-box;
+}
+
+/* Анімація появи хедера згори */
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%); /* Починаємо поза екраном зверху */
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0); /* Закінчуємо у вихідному положенні */
+    opacity: 1;
+  }
+}
+
+/* Анімація плавного появи з невеликим зсувом вгору */
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* Починаємо з повної прозорості */
+    transform: translateY(20px); /* Починаємо трохи нижче від фінальної позиції */
+  }
+  to {
+    opacity: 1; /* Закінчуємо повною непрозорістю */
+    transform: translateY(0); /* Закінчуємо у фінальній позиції */
+  }
+}
+
+/* === ХЕДЕР === */
+.header {
+  width: 100%;
+  background-color: #341d18;
+  padding: 1rem 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: fixed; /* Робимо хедер фіксованим */
+  top: 0; /* Прикріплюємо до верхнього краю */
+  left: 0; /* Прикріплюємо до лівого краю */
+  right: 0; /* Прикріплюємо до правого краю */
+  z-index: 100; /* Забезпечує відображення поверх іншого контенту */
+  /* Застосування анімації появи хедера */
+  animation: slideDown 0.6s ease-out forwards; /* Тривалість 0.6с, плавне завершення, залишається в кінцевому стані */
+}
+
+.navigation-menu {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0; /* Прибрати стандартний відступ ul */
+  margin: 0; /* Прибрати стандартний відступ ul */
+}
+
+.nav-list li a {
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  transition: color 0.3s ease;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.nav-list li a:hover {
+  color: #fff0d1;
+}
+
+.nav-list .logo a {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2rem;
+  color: #fff0d1;
+  font-weight: bold;
+  text-decoration: none; /* Прибираємо підкреслення з посилання логотипу */
+}
+
+/* Іконка корзини */
+/* Стилі для контейнерів іконок (<a>) */
+.icons a {
+  display: inline-block;
+  width: 40px; /* Задай бажаний розмір */
+  height: 40px; /* Задай бажаний розмір */
+  overflow: hidden; /* Приховує частини іконки, які виходять за межі */
+}
+
+/* Стилі для самих зображень іконок (<img>) */
+.icons a img {
+  display: block; /* Усуває зайві відступи під зображенням */
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Масштабує іконку, зберігаючи пропорції */
+  filter: brightness(0) invert(1); /* Робить іконку білою */
+}
+
+/* === ВІДГУКИ === */
+/* Застосовуємо анімацію появи до секції відгуків */
+.reviews-section {
+  max-width: 1100px;
+  margin: 3rem auto; /* Відступ зверху від main padding-top + власні відступи */
+  padding: 0 1rem;
+  flex-grow: 1; /* Займає доступний простір */
+  /* Застосування анімації плавного появи */
+  opacity: 0; /* Спочатку невидимий */
+  animation: fadeIn 1s ease-out forwards; /* Тривалість 1с, плавне завершення, залишається в кінцевому стані */
+  animation-delay: 0.3s; /* Затримка перед початком анімації (після хедера) */
+}
+
+/* Заголовок "Відгуки" всередині секції */
+.reviews-section h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 3rem;
+  text-align: center;
+  color: #fff0d1;
+  margin-top: 0; /* Прибираємо верхній відступ, бо його вже задає margin секції */
+  margin-bottom: 2rem; /* Відстань знизу до відгуків */
+}
+
+/* Стилі для контейнера h1, якщо він окремий */
+/* Ваш код має дублювання h1. Якщо h1 знаходиться безпосередньо в main .container, використовуйте цей селектор */
+/* .container h1 { ... } */
+
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .reviews-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.review-card {
+  background-color: #4b2e2b;
+  border-radius: 12px;
+  padding: 1.5rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Додано тінь до переходу */
+  font-family: "Cormorant Garamond", serif;
+  /* Картки будуть анімуватися як частина секції, але можна додати індивідуальні затримки, якщо потрібно */
+  /* animation: fadeIn 0.8s ease-out forwards; */
+  /* animation-delay: calc(0.4s + var(--delay-multiplier) * 0.1s); // Приклад з кастомною властивістю для затримки */
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.review-card img {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 5px #fff0d1aa;
+}
+
+.review-card h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #fff0d1;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.review-card p {
+  font-size: 1rem;
+  color: #fffccc;
+  line-height: 1.5;
+  font-family: "Cormorant Garamond", serif;
+}
+
+/* === ФУТЕР === */
+/* Застосовуємо анімацію появи до футера */
+.footer {
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 3rem;
+  border-top: 1px solid #fff;
+  font-family: "Cormorant Garamond", serif;
+  color: #fff; /* Колір тексту в футері */
+  /* Застосування анімації плавного появи */
+  opacity: 0; /* Спочатку невидимий */
+  animation: fadeIn 0.8s ease-out forwards; /* Тривалість 0.8с, плавне завершення, залишається в кінцевому стані */
+  animation-delay: 0.7s; /* Затримка, щоб з'явився після секції відгуків */
+}
+
+.footer p {
+  font-size: 0.9rem;
+  color: #fff; /* Колір тексту параграфа в футері */
+  font-family: "Cormorant Garamond", serif;
+  margin: 0.5rem 0; /* Відступ зверху та знизу */
+}
+
+.footer .socials {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.footer .socials span {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff; /* Колір тексту соцмереж */
+  cursor: pointer;
+  font-family: "Cormorant Garamond", serif;
+  transition: color 0.3s ease;
+}
+.footer .socials span:hover {
+  color: #fff0d1; /* Легка зміна кольору при наведенні */
+}

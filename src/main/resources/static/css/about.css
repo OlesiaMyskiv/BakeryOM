@@ -1,0 +1,230 @@
+/* src/main/resources/static/css/globals.css */
+
+/* --- Animation Keyframes (Визначаємо правила анімацій) --- */
+
+/* Анімація для хедера: з'являється згори */
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-100%); /* Починаємо зі зміщенням вгору на 100% висоти */
+        opacity: 0; /* Починаємо повністю прозорим */
+    }
+    100% {
+        transform: translateY(0); /* Закінчуємо в оригінальній позиції */
+        opacity: 1; /* Закінчуємо повністю видимим */
+    }
+}
+
+/* Анімація для плавного появи (зробимо окремо для зображення) */
+@keyframes fadeInImage {
+    0% {
+        opacity: 0; /* Починаємо повністю прозорим */
+    }
+    100% {
+        opacity: 1; /* Закінчуємо повністю видимим */
+    }
+}
+
+/* --- End Animation Keyframes --- */
+
+
+/* Загальні налаштування */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1; /* щоб зайняти весь доступний простір між header і footer */
+}
+
+body {
+    margin: 0;
+    background: #341d18; /* Темно-коричневий фон тіла */
+    color: #fff; /* Білий текст за замовчуванням */
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+}
+
+/* ХЕДЕР */
+.header {
+    width: 100%;
+    background-color: #341d18; /* Темно-коричневий фон */
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    /* --- Застосовуємо анімацію хедера --- */
+    animation: slideInFromTop 1s ease-out forwards; /* Назва анімації, тривалість, функція часу, стан після */
+    /* forwards означає, що елемент залишиться в кінцевому стані анімації */
+}
+
+/* Навігаційне меню */
+.navigation-menu {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Список навігації */
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+}
+
+/* Посилання пунктів меню */
+.nav-list li a {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff; /* Білий текст */
+    transition: 0.3s;
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+}
+
+.nav-list li a:hover {
+    color: #fff0d1; /* Світлий при наведенні */
+}
+
+/* Логотип */
+.nav-list .logo a {
+    font-family: 'Love Light', cursive; /* Залишено шрифт Love Light для логотипу */
+    font-size: 2rem;
+    color: #fff0d1;
+    font-weight: bold;
+    text-decoration: none; /* Прибираємо підкреслення з посилання логотипу */
+}
+
+/* Іконка корзини та користувача */
+/* Стилі для контейнерів іконок (<a>) */
+.icons a {
+    display: inline-block;
+    width: 30px; /* Розмір іконок (можна адаптувати) */
+    height: 30px; /* Розмір іконок */
+    overflow: hidden;
+    text-decoration: none; /* Прибираємо підкреслення з посилань іконок */
+}
+
+/* Стилі для самих зображень іконок (<img>) */
+.icons a img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0) invert(1); /* Робить іконку білою */
+}
+
+/* Стилі для кнопки "Вихід" */
+button.logout-button {
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    color: #fff; /* Колір тексту, як у пунктів меню */
+    padding: 0;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+button.logout-button:hover {
+    color: #fff0d1; /* Колір при наведенні, як у пунктів меню */
+}
+
+
+/* Основний блок "Про нас" */
+.about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem;
+    background: #341d18;
+}
+
+/* Контейнер для зображення та тексту */
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+/* Зображення */
+.about-image {
+    width: 575px;
+    height: 605px;
+    object-fit: cover;
+    border-radius: 10px;
+    /* --- Застосовуємо анімацію появи зображення --- */
+    animation: fadeInImage 1.5s ease-out 0.5s forwards; /* Назва, тривалість, функція часу, затримка (0.5s), стан після */
+    opacity: 0; /* Починаємо прозорим, щоб анімація мала ефект */
+}
+
+/* Заголовок "Про нас" */
+.about-text h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 400;
+    font-size: 70px;
+    color: #fff;
+    margin-bottom: 2rem;
+}
+
+/* Основний текст */
+.about-text p {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 400;
+    font-size: 30px;
+    color: #fff;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+}
+
+/* Футер */
+.footer {
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 3rem;
+    border-top: 1px solid #fff; /* Тонка біла лінія для відділення */
+    font-family: "Cormorant Garamond", serif;
+    color: #fff; /* Колір тексту футера */
+}
+
+.footer p {
+    font-size: 0.9rem;
+    color: #fff;
+    font-family: "Cormorant Garamond", serif;
+    margin: 0.5rem 0;
+}
+
+.footer .socials {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.footer .socials span {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff; /* Колір тексту соцмереж */
+    cursor: pointer;
+    font-family: "Cormorant Garamond", serif;
+    transition: color 0.3s ease; /* Плавна зміна кольору */
+}
+.footer .socials span:hover {
+    color: #fff0d1; /* Колір при наведенні */
+}
+
+/* Додайте або виправте інші глобальні стилі, які використовуються на кількох сторінках */
+/* .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; } */
+/* etc. */

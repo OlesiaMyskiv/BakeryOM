@@ -1,0 +1,299 @@
+/* Загальний стиль для body сторінки входу */
+body {
+    /* Замініть шлях на реальний шлях до вашого фонового зображення для входу */
+    background-image: url('/img/login.jpg'); /* Переконайтесь, що зображення існує за цим шляхом */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #4B2E2B; /* Темно-коричневий колір тексту за замовчуванням */
+    margin: 0;
+    padding-top: 76px; /* Відступ зверху, щоб хедер не перекривав контент */
+    min-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column; /* Розміщення елементів вертикально */
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+}
+
+/* Анімація появи хедера згори */
+@keyframes slideDown {
+    0% {
+        transform: translateY(-100%); /* Починаємо поза екраном зверху */
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0); /* Закінчуємо у вихідному положенні */
+        opacity: 1;
+    }
+}
+
+/* ХЕДЕР */
+.header {
+    width: 100%;
+    background-color: #fff;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: fixed; /* АБО position: sticky; */
+    top: 0;
+    z-index: 100; /* Забезпечує відображення поверх іншого контенту */
+    /* Застосування анімації */
+    animation: slideDown 0.6s ease-out forwards; /* Тривалість 0.6с, плавне завершення, залишається в кінцевому стані */
+}
+
+.navigation-menu {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.nav-list li a {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+    transition: 0.3s;
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+}
+
+.nav-list li a:hover {
+    color: #a0522d; /* коричневий при наведенні */
+}
+
+.nav-list .logo a {
+    font-family: 'Love Light', cursive; /* Застосовано шрифт Love Light для логотипу */
+    font-size: 2rem;
+    color: #4B2E2B;
+    font-weight: bold;
+}
+
+/* Іконка корзини */
+.icons a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+}
+
+.icons a img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: sepia(100%) saturate(50%) brightness(30%);
+}
+
+
+
+/* styles/login.css */
+
+/* Загальний стиль для body сторінки входу */
+body {
+    /* Замініть шлях на реальний шлях до вашого фонового зображення для входу */
+    background-image: url('/img/login.jpg'); /* Переконайтесь, що зображення існує за цим шляхом */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #4B2E2B; /* Темно-коричневий колір тексту за замовчуванням */
+    margin: 0;
+    padding-top: 76px; /* Відступ зверху, щоб хедер не перекривав контент */
+    min-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column; /* Розміщення елементів вертикально */
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+    /* 'Great Vibes' зазвичай не використовується для основного тексту через його стиль */
+}
+
+/* Стиль для хедера (якщо не повністю стилізований в globals.css) */
+/* Якщо globals.css повністю стилізує хедер, цей блок можна видалити */
+.header {
+    /* Базові стилі хедера */
+}
+
+/* Анімація легкої появи для інших елементів */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); /* Починаємо трохи нижче і прозорими */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Закінчуємо у вихідному положенні */
+    }
+}
+
+
+/* Стиль для головного контейнера форми входу */
+/* Використовуємо клас з вашого HTML: .login-form-container */
+.login-form-container {
+    background-color: rgba(89, 65, 0, 0.9); /* Напівпрозорий темно-золотистий/коричневий фон */
+    color: white; /* Колір тексту всередині блоку */
+    border-radius: 1rem; /* Заокруглені кути (схоже на rounded-lg) */
+    padding: 2rem; /* Внутрішній відступ (схоже на p-6) */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тінь */
+    max-width: 400px; /* Максимальна ширина (схоже на max-w-md) */
+    margin: 2rem auto; /* Центрування по горизонталі та відступ зверху/знизу */
+    display: flex; /* Використовуємо flexbox */
+    flex-direction: column; /* Розміщуємо елементи вертикально */
+    backdrop-filter: blur(5px); /* Ефект розмиття фону за блоком */
+    -webkit-backdrop-filter: blur(5px); /* Для Safari */
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+    /* Застосування анімації */
+    animation: fadeIn 0.8s ease-out forwards; /* Тривалість 0.8с, плавне завершення, залишається в кінцевому стані */
+    animation-delay: 0.3s; /* Затримка перед початком анімації (щоб хедер з'явився першим) */
+}
+
+/* Стиль для заголовка h1 всередині контейнера входу */
+.login-form-container h1 {
+    font-size: 2rem; /* Розмір шрифту (схоже на 3xl, але можна підкоригувати) */
+    text-align: center; /* Центрування */
+    margin-bottom: 1.5rem; /* Відступ знизу */
+    color: white; /* Колір заголовка */
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+}
+
+/* Стиль для повідомлення про помилку (${param.error}) */
+.login-form-container .text-red-500 {
+    color: #f8d7da; /* Блідо-червоний колір для повідомлення про помилку на темному фоні */
+    background-color: #721c24; /* Темно-червоний фон */
+    border: 1px solid #f5c6cb;
+    border-radius: 0.25rem;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+}
+
+
+/* Стиль для label всередині контейнера входу */
+.login-form-container label {
+    color: white; /* Колір тексту лейбла */
+    display: block; /* Робимо блоковим (схоже на block) */
+    margin-bottom: 0.5rem; /* Відступ знизу (схоже на mb-2) */
+    font-weight: bold; /* Жирний шрифт (схоже на font-bold) */
+    font-size: 0.875rem; /* Розмір тексту (схоже на text-sm) */
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+}
+
+/* Стиль для input полів всередині контейнера входу */
+.login-form-container input[type="email"],
+.login-form-container input[type="password"] {
+    border-radius: 0.5rem; /* Заокруглення */
+    padding: 0.75rem 1rem; /* Внутрішній відступ (схоже на py-2 px-3, але можна підправити) */
+    border: 1px solid #ccc; /* Рамка */
+    width: 100%; /* Ширина */
+    margin-bottom: 1rem; /* Відступ знизу */
+    box-sizing: border-box; /* Враховуємо padding та border у загальну ширину */
+    color: #333; /* Колір тексту в полях */
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+    /* Інші класи (shadow, appearance-none, leading-tight, focus) ймовірно стилізовані Tailwind */
+}
+
+/* Стиль для контейнера кнопки та посилання */
+.login-form-container .flex.items-center.justify-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* margin-bottom: 1.5rem; */ /* Додайте, якщо потрібен відступ після цього блоку */
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+}
+
+
+/* Стиль для кнопки submit всередині контейнера входу */
+/* Використовуємо класи bg-blue-500, hover:bg-blue-700, text-white, font-bold, py-2, px-4, rounded з HTML */
+/* Ці стилі, ймовірно, вже задані Tailwind, але можна додати базові тут */
+.login-form-container button[type="submit"] {
+    /* background-color: #3b82f6; */ /* Колір кнопки blue-500 */
+    /* color: white; */
+    /* font-weight: bold; */
+    /* padding: 0.5rem 1rem; */ /* py-2 px-4 */
+    /* border: none; */
+    /* border-radius: 0.25rem; */ /* rounded */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+}
+
+/* Стиль для посилання "Зареєструватися" */
+/* Використовуємо класи inline-block, align-baseline, font-bold, text-sm, text-blue-500, hover:text-blue-800 */
+.login-form-container a {
+    color: #C9B194; /* Світло-коричневий або золотистий колір */
+    text-decoration: none; /* Без підкреслення */
+    /* font-weight: bold; */ /* Вже є клас font-bold */
+    /* font-size: 0.875rem; */ /* Вже є клас text-sm */
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+}
+.login-form-container a:hover {
+    color: #594100; /* Зміна кольору при наведенні */
+    text-decoration: underline; /* Підкреслення */
+}
+
+
+/* Стиль для футера (якщо не повністю стилізований в globals.css) */
+/* Якщо globals.css повністю стилізує футер, цей блок можна видалити */
+.footer {
+    /* Базові стилі футера */
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+}
+
+/* Переконайтесь, що у вас підключено шрифти 'Cormorant Garamond' та 'Love Light' */
+/* Приклад підключення в HTML (в секції <head> login-form.html): */
+/*
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;700&family=Love+Light&display=swap" rel="stylesheet">
+*/
+
+
+/* Стиль для футера */
+.footer {
+    background-color: #f8f8f8;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto; /* Притискає футер до низу, якщо контенту мало */
+    /* Застосування анімації, якщо потрібно, інакше видаліть цей блок */
+    /* animation: fadeIn 0.8s ease-out forwards; */
+    /* animation-delay: 0.5s; */ /* Додайте затримку після форми */
+}
+
+.footer p {
+    font-size: 0.9rem;
+    color: #555;
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+}
+
+.footer .socials {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.footer .socials span {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+}
+
+/* Контейнер для основного контенту (щоб уникнути перекриття хедером) */
+/* Якщо ви використовуєте login-form-container як основний контент, цей клас може бути не потрібен для анімації */
+.main-content {
+    margin-top: 76px; /* Або інша висота, що відповідає висоті вашого хедера */
+    /* Інші стилі для вашого основного контенту */
+    font-family: "Cormorant Garamond", serif; /* Застосовано шрифт Cormorant Garamond */
+    /* Якщо main-content обгортає login-form-container, анімація може бути тут */
+    /* animation: fadeIn 0.8s ease-out forwards; */
+    /* animation-delay: 0.3s; */
+}

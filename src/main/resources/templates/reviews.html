@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Відгуки - Cake House</title>
+  <link rel="stylesheet" th:href="@{/css/reviews.css}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;700&family=Love+Light&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+  <nav class="navigation-menu">
+    <ul class="nav-list">
+      <li><a th:href="@{/about}" th:text="${navAbout}">Про нас</a></li>
+      <li><a th:href="@{/assortment}" th:text="${navAssortment}">Асортимент</a></li>
+      <li class="logo"><a th:href="@{/}" th:text="${headerTitle}">Cake House</a></li>
+      <li><a th:href="@{/reviews}" th:text="${navReviews}">Відгуки</a></li>
+      <li class="icons">
+        <a th:href="@{/cart}" id="openCartButton"><img th:src="@{/img/cart-icon.svg}" alt="Cart"></a>
+      </li>
+      <li class="icons">
+        <a th:href="@{/login-form}" id="openUserButton"><img th:src="@{/img/user-icon.svg}" alt="User"></a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Main -->
+<main class="container">
+  <h1>Відгуки наших клієнтів</h1>
+  <div class="reviews-grid">
+    <div th:each="review : ${reviews}" class="review-card">
+      <img
+              th:src="@{/img/{img}(img=${review.imageUrl})}"
+              alt="User Image"
+              loading="lazy"
+      />
+      <div class="review-content">
+        <h2 th:text="${review.name}">Ім'я</h2>
+        <p th:text="${review.content}">Тут буде відгук</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <p>&copy; 2025 Cake House. Всі права захищені.</p>
+  <div class="socials">
+    <span>Instagram</span>
+    <span>Facebook</span>
+    <span>Telegram</span>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Реєстрація - Cake House</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;700&family=Love+Light&display=swap" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/regist.css}">
+</head>
+<body>
+
+<header class="header">
+  <nav class="navigation-menu">
+    <ul class="nav-list">
+      <li><a th:href="@{/about}" th:text="${navAbout}">Про нас</a></li>
+      <li><a th:href="@{/assortment}" th:text="${navAssortment}">Асортимент</a></li>
+      <li class="logo"><a th:href="@{/}" th:text="${headerTitle}">Cake House</a></li>
+      <li><a th:href="@{/reviews}" th:text="${navReviews}">Відгуки</a></li>
+      <li class="icons">
+        <a th:href="@{/cart}" id="openCartButton"><img th:src="@{/img/cart-icon.svg}" alt="Cart"></a>
+      </li>
+      <li class="icons">
+        <a th:href="@{/login-form}" id="openUserButton"><img th:src="@{/img/user-icon.svg}" alt="User"></a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<main class="container mx-auto py-8"> <div class="registration-form-container"> <h2>Реєстрація</h2>
+
+  <div th:if="${emailError}" class="alert error">
+    <p th:text="${emailError}"></p>
+  </div>
+  <div th:if="${registrationError}" class="alert error">
+    <p th:text="${registrationError}"></p>
+  </div>
+  <div th:if="${#fields.hasErrors('user.*')}" class="alert error">
+    <p>Будь ласка, виправте наступні помилки:</p>
+    <ul>
+      <li th:each="err : ${#fields.errors('user.*')}" th:text="${err}">Помилка валідації</li>
+    </ul>
+  </div>
+
+  <form th:action="@{/registration}" th:object="${user}" method="post">
+    <div>
+      <label for="firstName">Ім'я:</label> <input type="text" id="firstName" th:field="*{firstName}" required>
+      <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="error-text"></p>
+    </div>
+    <div>
+      <label for="lastName">Прізвище:</label> <input type="text" id="lastName" th:field="*{lastName}">
+      <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="error-text"></p>
+    </div>
+    <div>
+      <label for="email">Email:</label> <input type="email" id="email" th:field="*{email}" required>
+      <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error-text"></p>
+    </div>
+    <div>
+      <label for="password">Пароль:</label> <input type="password" id="password" th:field="*{password}" required>
+      <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error-text"></p>
+    </div>
+    <button type="submit">Зареєструватися</button>
+  </form>
+</div>
+</main>
+
+<footer class="footer">
+  <p>&copy; 2025 Cake House. Всі права захищені.</p>
+  <div class="socials">
+    <span>Instagram</span>
+    <span>Facebook</span>
+    <span>Telegram</span>
+  </div>
+</footer>
+
+</body>
+</html>

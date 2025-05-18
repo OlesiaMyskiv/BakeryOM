@@ -1,0 +1,242 @@
+/* src/main/resources/static/css/globals.css */
+
+/* --- Animation Keyframes (Визначаємо правила анімацій) --- */
+
+/* Анімація для хедера: з'являється згори */
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%); /* Починаємо зі зміщенням вгору на 100% висоти */
+    opacity: 0; /* Починаємо повністю прозорим */
+  }
+  100% {
+    transform: translateY(0); /* Закінчуємо в оригінальній позиції */
+    opacity: 1; /* Закінчуємо повністю видимим */
+  }
+}
+
+/* Анімація для плавного появи елементів (легенько) */
+@keyframes fadeIn {
+  0% {
+    opacity: 0; /* Починаємо повністю прозорим */
+  }
+  100% {
+    opacity: 1; /* Закінчуємо повністю видимим */
+  }
+}
+
+/* --- End Animation Keyframes --- */
+
+
+/* Загальний стиль */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Cormorant Garamond", serif;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1; /* щоб зайняти весь доступний простір між header і footer */
+}
+
+body {
+  background-color: #fff; /* Білий фон тіла */
+  color: #000; /* Чорний текст */
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Cormorant Garamond", serif;
+}
+
+/* ХЕДЕР */
+.header {
+  width: 100%;
+  background-color: #fff; /* Білий фон хедера */
+  padding: 1rem 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  /* --- Застосовуємо анімацію хедера --- */
+  animation: slideInFromTop 1s ease-out forwards; /* Назва анімації, тривалість, функція часу, стан після */
+}
+
+/* Навігаційне меню */
+.navigation-menu {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Список навігації */
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+}
+
+/* Посилання пунктів меню */
+.nav-list li a {
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333; /* Колір тексту */
+  transition: 0.3s;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.nav-list li a:hover {
+  color: #a0522d; /* Коричневий при наведенні */
+}
+
+/* Логотип */
+.nav-list .logo a {
+  font-family: 'Love Light', cursive;
+  font-size: 2rem;
+  color: #4B2E2B; /* Темно-коричневий колір */
+  font-weight: bold;
+  text-decoration: none; /* Прибираємо підкреслення з посилання логотипу */
+}
+
+/* Іконка корзини та користувача */
+/* Стилі для контейнерів іконок (<a>) */
+.icons a {
+  display: inline-block;
+  width: 30px; /* Розмір іконок (можна адаптувати) */
+  height: 30px; /* Розмір іконок */
+  overflow: hidden;
+  text-decoration: none; /* Прибираємо підкреслення з посилань іконок */
+}
+
+/* Стилі для самих зображень іконок (<img>) */
+.icons a img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: sepia(100%) saturate(50%) brightness(30%); /* Робить іконку коричневою */
+  transition: filter 0.3s ease; /* Плавна зміна фільтра при наведенні */
+}
+
+/* Приклад ефекту при наведенні на іконку */
+.icons a:hover img {
+  filter: sepia(0%) saturate(100%) brightness(0%); /* Робить іконку чорною */
+}
+
+/* ПРОДУКТИ - Секція асортименту */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding: 2rem;
+  max-width: 1200px; /* Додамо макс ширину */
+  margin: 0 auto; /* та центрування для секції асортименту */
+}
+
+.product-card {
+  background-color: #2a1a15; /* Темний фон картки */
+  color: #fff; /* Білий текст на картці */
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+  /* --- Застосовуємо анімацію появи картки продукту --- */
+  animation: fadeIn 1s ease-out forwards; /* Назва, тривалість, функція часу, стан після */
+  opacity: 0; /* Починаємо прозорим */
+  /* Якщо потрібна затримка для кожної картки, це потребує JavaScript */
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.product-card h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.product-card p {
+  margin-bottom: 10px;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.product-card button {
+  background: none;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: 0.3s ease;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.product-card button:hover {
+  background-color: #fff;
+  color: #2a1a15;
+}
+
+/* ЗАГОЛОВОК НА ГОЛОВНІЙ СТОРІНЦІ АСОРТИМЕНТУ */
+main h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 2rem 0;
+  color: #4B2E2B; /* Темно-коричневий колір */
+  font-family: "Cormorant Garamond", serif;
+}
+
+
+/* ФУТЕР */
+.footer {
+  background-color: #f8f8f8; /* Світло-сірий фон */
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 3rem;
+  font-family: "Cormorant Garamond", serif;
+  color: #555; /* Колір тексту */
+}
+
+.footer p {
+  font-size: 0.9rem;
+  color: #555;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.footer .socials {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.footer .socials span {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  font-family: "Cormorant Garamond", serif;
+  transition: color 0.3s ease; /* Плавна зміна кольору */
+}
+
+.footer .socials span:hover {
+  color: #a0522d; /* Коричневий при наведенні */
+}
+
+/* Додайте або виправте інші глобальні стилі, які використовуються на кількох сторінках */
+/* .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; } */
+/* etc. */
