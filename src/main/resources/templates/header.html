@@ -18,6 +18,20 @@
         <li><a th:href="@{/login-form}" class="text-gray-700 hover:text-brown-500">Вхід</a></li>
         <li><a th:href="@{/register}" class="text-gray-700 hover:text-brown-500">Реєстрація</a></li>
         <li><form th:action="@{/logout}" method="post"><button type="submit" class="text-gray-700 hover:text-brown-500">Вихід</button></form></li>
+
+          <a th:if="${#authorization.expression('isAnonymous()')}"
+             th:href="@{/login-form}"
+             id="openUserButton">
+              <img th:src="@{/img/user-icon.svg}" alt="Увійти">
+          </a>
+
+          <a th:if="${#authorization.expression('isAuthenticated()')}"
+             th:href="@{/profile}"
+             id="openUserButton">
+              <img th:src="@{/img/user-icon.svg}" alt="Мій профіль">
+          </a>
+
+
       </ul>
     </nav>
   </div>

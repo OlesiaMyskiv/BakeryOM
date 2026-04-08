@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Мій Профіль</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div th:replace="~{header :: header}"></div>
+<div class="profile-container">
+    <h1>Привіт, <span th:text="${user.firstName}">Користувач</span>!</h1>
+    <p>Твій Email: <span th:text="${user.email}"></span></p>
+
+    <div class="actions">
+        <a href="/cart" class="btn">Мої замовлення</a>
+        <br><br>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" style="background: none; border: none; color: red; cursor: pointer;">
+                Вийти з акаунта
+            </button>
+        </form>
+    </div>
+</div>
+
+<main style="padding: 50px; text-align: center;">
+    <h1>Вітаємо, <span th:text="${user.firstName}">Користувач</span>!</h1>
+    <div class="profile-info" style="margin-top: 20px; font-size: 1.2em;">
+        <p><strong>Ім'я:</strong> <span th:text="${user.firstName} + ' ' + ${user.lastName}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
+    </div>
+    <br>
+    <a href="/logout" class="btn" style="color: red;">Вийти з акаунта</a>
+</main>
+</body>
+</html>

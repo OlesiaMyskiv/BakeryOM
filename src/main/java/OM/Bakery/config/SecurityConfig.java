@@ -42,43 +42,39 @@ public class SecurityConfig { // Клас для налаштування без
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                // CSRF захист увімкнено за замовчуванням.
-                // .csrf(csrf -> csrf.disable()) // Цей рядок ВИДАЛЕНО або ЗАКОМЕНТОВАНО (захист активний).
-                .authenticationProvider(authenticationProvider()) // Реєстрація кастомного провайдера.
-                // Налаштування правил авторизації для запитів.
+                .authenticationProvider(authenticationProvider())
                 .authorizeHttpRequests((requests) -> requests
-                        // Дозволяємо доступ без аутентифікації до публічних сторінок та статики.
+                        // 1. Спочатку дозволяємо доступ до публічних сторінок та статики
                         .requestMatchers("/", "/registration", "/registration-success", "/login-form",
                                 "/about", "/assortment", "/cart", "/cart/add", "/reviews",
-                                "/cart/order/success", // Сторінка успіху замовлення.
-                                "/css/**", "/img/**", "/js/**").permitAll() // Доступ дозволено всім.
-                        // Всі інші запити вимагають аутентифікації.
-                        .anyRequest().authenticated() // Доступ тільки для аутентифікованих.
+                                "/cart/order/success", "/css/**", "/img/**", "/js/**").permitAll()
+
+                        // 2. Потім вказуємо правила для конкретних сторінок (якщо потрібно)
+                        .requestMatchers("/profile").authenticated()
+
+                        // 3. І ТІЛЬКИ В КІНЦІ — правило для всіх інших запитів
+                        .anyRequest().authenticated()
                 )
-                // Налаштування форми входу.
                 .formLogin((form) -> form
-                        .loginPage("/login-form") // URL сторінки входу.
-                        .loginProcessingUrl("/perform_login") // URL для обробки даних входу (POST).
-                        .defaultSuccessUrl("/", true) // Куди перенаправити після успішного входу.
-                        .failureUrl("/login-form?error") // Куди перенаправити у випадку помилки входу.
-                        .permitAll() // Сторінка входу доступна всім.
+                        .loginPage("/login-form")
+                        .loginProcessingUrl("/perform_login")
+                        .defaultSuccessUrl("/", true)
+                        .failureUrl("/login-form?error")
+                        .permitAll()
                 )
-                // Налаштування виходу з системи.
                 .logout((logout) -> logout
-                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout")) // URL для логауту (POST).
-                        .logoutSuccessUrl("/") // Куди перенаправити після логауту.
-                        .invalidateHttpSession(true) // Анулювати сесію.
-                        .clearAuthentication(true) // Очистити аутентифікацію.
-                        .permitAll() // Доступ до логауту дозволено всім.
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                        .logoutSuccessUrl("/")
+                        .invalidateHttpSession(true)
+                        .clearAuthentication(true)
+                        .permitAll()
                 )
-                // Обробка винятків (наприклад, коли потрібна аутентифікація).
                 .exceptionHandling((exceptionHandling) ->
-                        // Перенаправляємо на сторінку входу, якщо потрібна аутентифікація.
                         exceptionHandling.authenticationEntryPoint((request, response, authException) -> {
-                            response.sendRedirect("/login-form"); // Перенаправлення на сторінку входу.
+                            response.sendRedirect("/login-form");
                         })
                 );
 
-        return http.build(); // Побудова та повернення ланцюжка фільтрів.
+        return http.build();
     }
 }
