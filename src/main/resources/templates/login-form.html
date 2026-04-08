@@ -9,33 +9,7 @@
   <link rel="stylesheet" th:href="@{/css/login.css}"> </head>
 <body>
 
-<header class="header">
-  <nav class="navigation-menu">
-    <ul class="nav-list">
-      <li><a th:href="@{/about}" th:text="${navAbout}">Про нас</a></li>
-      <li><a th:href="@{/assortment}" th:text="${navAssortment}">Асортимент</a></li>
-      <li class="logo"><a th:href="@{/}" th:text="${headerTitle}">Cake House</a></li>
-      <li><a th:href="@{/reviews}" th:text="${navReviews}">Відгуки</a></li>
-      <li class="icons">
-        <a th:href="@{/cart}" id="openCartButton"><img th:src="@{/img/cart-icon.svg}" alt="Cart"></a>
-      </li>
-      <li class="icons">
-           <span sec:authorize="isAuthenticated()">
-                 <img th:src="@{/img/user-icon.svg}" alt="Logged In User">
-           </span>
-        <span sec:authorize="isAnonymous()">
-               <a th:href="@{/login-form}" id="openUserButton"><img th:src="@{/img/user-icon.svg}" alt="Login/Register"></a>
-           </span>
-      </li>
-      <li sec:authorize="isAuthenticated()">
-        <form th:action="@{/logout}" method="post">
-          <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" sec:authorize="!isAnonymous()"/>
-          <button type="submit" class="logout-button">Вихід</button>
-        </form>
-      </li>
-    </ul>
-  </nav>
-</header>
+<header th:replace="~{header :: header}"></header>.
 
 <main class="container mx-auto py-8">
   <div class="login-form-container">
